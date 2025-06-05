@@ -1,0 +1,16 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Model files
+*.pkl
+
+# System files
+.DS_Store
+
+# Virtual environment folders
+env/
+venv/
+git add .gitignore
+git commit -m "add .gitignore to exclude model files and cache"
+git push
