@@ -2,6 +2,11 @@ import streamlit as st
 import pickle
 import numpy as np
 from clean import clean_text
+from huggingface_hub import hf_hub_download
+
+model_path = hf_hub_download(repo_id="MLwithSam/tweet-sentiment-model", filename="model.pkl")
+tfidf_path = hf_hub_download(repo_id="MLwithSam/tweet-sentiment-model", filename="tfidf.pkl")
+label_encoder_path = hf_hub_download(repo_id="MLwithSam/tweet-sentiment-model", filename="label_encoder.pkl")
 
 # Load saved models
 with open("model.pkl", "rb") as f:

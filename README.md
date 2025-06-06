@@ -10,7 +10,7 @@ A simple Streamlit web app that classifies the sentiment of tweets as **Positive
 - Label encoding for output
 - Runs locally with Streamlit
 
-## Requirements
+## gitRequirements
 
 Install required packages:
 
