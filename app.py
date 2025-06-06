@@ -4,18 +4,18 @@ import numpy as np
 from clean import clean_text
 from huggingface_hub import hf_hub_download
 
-model_path = hf_hub_download(repo_id="MLwithSam/tweet-sentiment-model", filename="model.pkl")
-tfidf_path = hf_hub_download(repo_id="MLwithSam/tweet-sentiment-model", filename="tfidf.pkl")
-label_encoder_path = hf_hub_download(repo_id="MLwithSam/tweet-sentiment-model", filename="label_encoder.pkl")
+model_path = hf_hub_download(repo_id="MLwithSam/tweet-sentiment-app", filename="model.pkl")
+tfidf_path = hf_hub_download(repo_id="MLwithSam/tweet-sentiment-app", filename="tfidf.pkl")
+label_encoder_path = hf_hub_download(repo_id="MLwithSam/tweet-sentiment-app", filename="label_encoder.pkl")
 
 # Load saved models
-with open("model.pkl", "rb") as f:
+with open(model_path, "rb") as f:
     model = pickle.load(f)
 
-with open("tfidf.pkl", "rb") as f:
+with open(tfidf_path, "rb") as f:
     tfidf = pickle.load(f)
 
-with open("label_encoder.pkl", "rb") as f:
+with open(label_encoder_path, "rb") as f:
     le = pickle.load(f)
 
 # App UI
