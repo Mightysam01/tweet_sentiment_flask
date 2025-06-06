@@ -1,9 +1,11 @@
 import streamlit as st
 import pickle
 import numpy as np
+import pandas as pd
 from clean import clean_text
 from huggingface_hub import hf_hub_download
 
+# Load from HuggingFace Hub
 model_path = hf_hub_download(repo_id="MLwithSam/tweet-sentiment-app", filename="model.pkl")
 tfidf_path = hf_hub_download(repo_id="MLwithSam/tweet-sentiment-app", filename="tfidf.pkl")
 label_encoder_path = hf_hub_download(repo_id="MLwithSam/tweet-sentiment-app", filename="label_encoder.pkl")
@@ -23,6 +25,7 @@ st.set_page_config(page_title="Tweet Sentiment Classifier", layout="centered")
 st.title("🧠 Tweet Sentiment Classifier")
 st.markdown("Enter a tweet below to classify it as **Positive**, **Neutral**, or **Negative**.")
 
+# --- Single Tweet Prediction ---
 tweet = st.text_area("Your Tweet", height=120)
 
 if st.button("Predict Sentiment"):
@@ -33,9 +36,18 @@ if st.button("Predict Sentiment"):
         vec = tfidf.transform([cleaned])
         pred = model.predict(vec)
         label = le.inverse_transform(pred)[0]
-        
-        # Add this after your single tweet section
 
+        proba = model.predict_proba(vec)[0]
+
+        st.subheader("Prediction:")
+        st.success(f"**{label.upper()}** sentiment")
+
+        # Show confidence scores
+        st.subheader("Confidence Scores:")
+        for i, class_label in enumerate(le.classes_):
+            st.write(f"{class_label.capitalize()}: {proba[i]:.2%}")
+
+# --- CSV Upload & Batch Prediction ---
 st.markdown("---")
 st.header("📂 Batch Prediction (Upload CSV)")
 
@@ -74,7 +86,3 @@ if uploaded_file is not None:
             # Allow download
             csv_result = df_upload.to_csv(index=False).encode('utf-8')
             st.download_button("📥 Download Predictions as CSV", csv_result, "tweet_predictions.csv", "text/csv")
-
-
-        st.subheader("Prediction:")
-        st.success(f"**{label.upper()}** sentiment")
