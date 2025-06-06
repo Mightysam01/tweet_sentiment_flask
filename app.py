@@ -22,7 +22,7 @@ with open(label_encoder_path, "rb") as f:
 
 # App UI
 st.set_page_config(page_title="Tweet Sentiment Classifier", layout="centered")
-st.title("🧠 Tweet Sentiment Classifier")
+st.title("Tweet Sentiment Classifier")
 st.markdown("Enter a tweet below to classify it as **Positive**, **Neutral**, or **Negative**.")
 
 # --- Single Tweet Prediction ---
@@ -49,7 +49,7 @@ if st.button("Predict Sentiment"):
 
 # --- CSV Upload & Batch Prediction ---
 st.markdown("---")
-st.header("📂 Batch Prediction (Upload CSV)")
+st.header("Batch Prediction (Upload CSV)")
 
 uploaded_file = st.file_uploader("Upload CSV with a `text` column", type=["csv"])
 
