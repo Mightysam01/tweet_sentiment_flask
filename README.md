@@ -1,19 +1,24 @@
 # Tweet Sentiment Classifier
 
-A simple Streamlit web app that classifies the sentiment of tweets as **Positive**, **Neutral**, or **Negative**.
+A Streamlit web app that classifies the sentiment of tweets as **Positive**, **Neutral**, or **Negative**.
 
 ## Features
 
-- Text cleaning with `nltk`
+- Built with Streamlit
+- Preprocessing using NLTK
 - TF-IDF vectorization
-- Trained model (Logistic Regression or similar)
-- Label encoding for output
-- Runs locally with Streamlit
+- Trained model hosted on Hugging Face Hub
+- Clean and lightweight GitHub repo — no large model files inside
 
-## gitRequirements
+## Live App
 
-Install required packages:
+[View on Streamlit Cloud]https://app-tweet-sentiment-app-z7pcqyfdgkcukyeylnktn4.streamlit.app/
+
+## How to Run Locally
+
+1. Clone the repo:
 
 ```bash
-pip install -r requirements.txt
+git clone https://github.com/Mightysam01/streamlit-tweet-sentiment-app.git
+cd streamlit-tweet-sentiment-app
 ```
