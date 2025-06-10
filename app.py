@@ -1,16 +1,16 @@
-import streamlit as st
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 import pickle
 import numpy as np
-import pandas as pd
 from clean import clean_text
 from huggingface_hub import hf_hub_download
 
-# Load from HuggingFace Hub
+# Load model files from Hugging Face
 model_path = hf_hub_download(repo_id="MLwithSam/tweet-sentiment-app", filename="model.pkl")
 tfidf_path = hf_hub_download(repo_id="MLwithSam/tweet-sentiment-app", filename="tfidf.pkl")
 label_encoder_path = hf_hub_download(repo_id="MLwithSam/tweet-sentiment-app", filename="label_encoder.pkl")
 
-# Load saved models
+# Load models
 with open(model_path, "rb") as f:
     model = pickle.load(f)
 
@@ -20,69 +20,32 @@ with open(tfidf_path, "rb") as f:
 with open(label_encoder_path, "rb") as f:
     le = pickle.load(f)
 
-# App UI
-st.set_page_config(page_title="Tweet Sentiment Classifier", layout="centered")
-st.title("Tweet Sentiment Classifier")
-st.markdown("Enter a tweet below to classify it as **Positive**, **Neutral**, or **Negative**.")
+# Init Flask app
+app = Flask(__name__)
+CORS(app)
 
-# --- Single Tweet Prediction ---
-tweet = st.text_area("Your Tweet", height=120)
+@app.route("/")
+def home():
+    return "Tweet Sentiment API is running!"
 
-if st.button("Predict Sentiment"):
-    if tweet.strip() == "":
-        st.warning("Please enter a tweet.")
-    else:
-        cleaned = clean_text(tweet)
-        vec = tfidf.transform([cleaned])
-        pred = model.predict(vec)
-        label = le.inverse_transform(pred)[0]
+@app.route("/predict", methods=["POST"])
+def predict():
+    data = request.get_json()
 
-        proba = model.predict_proba(vec)[0]
+    if not data or "text" not in data:
+        return jsonify({"error": "Missing 'text' in request body"}), 400
 
-        st.subheader("Prediction:")
-        st.success(f"**{label.upper()}** sentiment")
+    tweet = data["text"]
 
-        # Show confidence scores
-        st.subheader("Confidence Scores:")
-        for i, class_label in enumerate(le.classes_):
-            st.write(f"{class_label.capitalize()}: {proba[i]:.2%}")
+    # Clean and predict
+    cleaned = clean_text(tweet)
+    vec = tfidf.transform([cleaned])
+    pred = model.predict(vec)
+    label = le.inverse_transform(pred)[0]
 
-# --- CSV Upload & Batch Prediction ---
-st.markdown("---")
-st.header("Batch Prediction (Upload CSV)")
+    return jsonify({
+        "prediction": label
+    })
 
-uploaded_file = st.file_uploader("Upload CSV with a `text` column", type=["csv"])
-
-if uploaded_file is not None:
-    df_upload = None
-    try:
-        df_upload = pd.read_csv(uploaded_file)
-    except Exception as e:
-        st.error(f"Error reading CSV file: {e}")
-
-    if df_upload is not None:
-        # Safe error checking: ensure 'text' column exists
-        if 'text' not in df_upload.columns:
-            st.error("CSV must contain a `text` column.")
-        else:
-            st.write("Preview of uploaded data:")
-            st.write(df_upload.head())
-
-            # Clean, vectorize, predict
-            df_upload['clean_text'] = df_upload['text'].apply(clean_text)
-            vec = tfidf.transform(df_upload['clean_text'])
-            preds = model.predict(vec)
-            proba = model.predict_proba(vec)
-
-            df_upload['predicted_sentiment'] = le.inverse_transform(preds)
-
-            df_upload['confidence_negative'] = proba[:, 0]
-            df_upload['confidence_neutral'] = proba[:, 1]
-            df_upload['confidence_positive'] = proba[:, 2]
-
-            st.write("Predictions:")
-            st.write(df_upload[['text', 'predicted_sentiment', 'confidence_negative', 'confidence_neutral', 'confidence_positive']])
-
-            # Allow download
-            csv_result = df_upload.to_csv(index=False).encode('utf-8')
-            st.download_button("📥 Download Predictions as CSV", csv_result, "tweet_predictions.csv", "text/csv")
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
