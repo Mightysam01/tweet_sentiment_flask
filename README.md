@@ -58,3 +58,12 @@ Response:
 }
 
 ```
+
+---
+
+## Credits
+
+- ML model and API developed by [MLwithSam](https://huggingface.co/MLwithSam)
+- Frontend hosted on [Vercel](https://tweet-sentiment-flask.vercel.app)
+- Backend hosted on [Render](https://tweet-sentiment-api.onrender.com)
+- Model files hosted on [Hugging Face Hub](https://huggingface.co/MLwithSam/tweet-sentiment-app/tree/main)
