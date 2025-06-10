@@ -41,7 +41,7 @@ Request Body:
 Response:
 {
   "prediction": "Positive"
-}
+}```
 
 ---
 
@@ -49,7 +49,7 @@ Response:
 
 Model files are hosted publicly on Hugging Face:
 
-- Model files: [https://huggingface.co/MLwithSam/tweet-sentiment-app/tree/main](https://huggingface.co/MLwithSam/tweet-sentiment-app/tree/main)
+- [Model files on Hugging Face](https://huggingface.co/MLwithSam/tweet-sentiment-app/tree/main)
 - model.pkl
 - tfidf.pkl
 - label_encoder.pkl
