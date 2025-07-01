@@ -27,8 +27,8 @@ function App() {
 
       if (response.ok) {
         setPrediction(data.prediction);
-        setLastText(text); // store what was typed
-        setText('');       // clear input field
+        setLastText(text);
+        setText('');
       } else {
         setError(data.error || "An error occurred.");
       }
@@ -42,19 +42,30 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h2>Tweet Sentiment App</h2>
+        <h1>Tweet Sentiment Classifier</h1>
+        <p className="intro-text">
+          This app predicts the sentiment of short tweets or phrases. Type a sentence and press “Predict” to see if it’s classified as Positive, Neutral, or Negative.
+        </p>
+
+        <div className="examples">
+          <p><strong>Try one of these:</strong></p>
+          <ul>
+            <li>“I'm really happy with the new phone.” → Positive</li>
+            <li>“It’s just another regular day.” → Neutral</li>
+            <li>“I hate waiting in traffic.” → Negative</li>
+          </ul>
+        </div>
 
         <form onSubmit={handleSubmit} className="predict-form">
           <textarea
             rows="4"
             cols="50"
-            placeholder="Type here..."
+            placeholder="Type a tweet here..."
             value={text}
             onChange={(e) => setText(e.target.value)}
             required
             className="text-input"
           />
-          <br />
           <button type="submit" disabled={loading} className="predict-button">
             {loading ? "Predicting..." : "Predict"}
           </button>
@@ -62,12 +73,12 @@ function App() {
 
         {prediction && (
           <div className="result-box">
-            <p><strong>Tweet:</strong> {lastText}</p>
+            <p><strong>Input:</strong> {lastText}</p>
             <p><strong>Prediction:</strong> {prediction}</p>
           </div>
         )}
 
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {error && <p className="error-message">{error}</p>}
       </header>
     </div>
   );

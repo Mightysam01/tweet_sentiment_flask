@@ -1,91 +1,81 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  padding: 40px 20px;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #ffffff;
+  padding: 30px;
+  margin: auto;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+  font-size: 26px;
+  margin-bottom: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.intro-text {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #333;
 }
 
-.App-header {
-  background-color: #282c34;
-  padding: 40px;
-  color: white;
-  font-family: Arial, sans-serif;
+.examples {
+  text-align: left;
+  margin: 20px 0;
+  font-size: 14px;
+  color: #444;
 }
 
 .predict-form {
-  margin-top: 20px;
-}
-.text-input::placeholder {
-  font-style: italic;
-  color: #aaa;
+  margin: 20px 0;
 }
 
 .text-input {
-  font-size: 16px;
-  font-family: Arial, sans-serif;
-  font-style: normal; 
+  width: 100%;
+  max-width: 100%;
   padding: 10px;
-  width: 400px;
-  max-width: 90%;
-  border-radius: 5px;
+  font-size: 16px;
+  border-radius: 6px;
   border: 1px solid #ccc;
+  resize: none;
 }
 
-
 .predict-button {
-  font-size: 16px;
-  font-family: Arial, sans-serif;
-  font-weight: bold;
-  padding: 10px 20px;
   margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
   border: none;
-  border-radius: 5px;
-  background-color: #4caf50;
-  color: white;
+  border-radius: 6px;
   cursor: pointer;
 }
 
 .predict-button:disabled {
-  background-color: #888;
+  background-color: #cccccc;
   cursor: not-allowed;
 }
 
 .result-box {
-  margin-top: 30px;
+  margin-top: 20px;
   padding: 15px;
-  background-color: #444;
-  border-radius: 5px;
-  font-size: 18px;
+  background-color: #eef;
+  border-left: 4px solid #007bff;
+  border-radius: 6px;
+  text-align: left;
+}
+
+.error-message {
+  color: red;
+  margin-top: 15px;
 }
