@@ -61,6 +61,12 @@ Response:
 
 ---
 
+## New Update
+
+- An improved and production-ready version trained on a large and high-quality dataset is out and can be test [here](https://tweet-sentiment-flask-v2-0.vercel.app/)
+
+---
+
 ## Credits
 
 - ML model and API developed by [MLwithSam](https://huggingface.co/MLwithSam)
