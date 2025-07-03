@@ -63,7 +63,7 @@ Response:
 
 ## New Update
 
-- An improved and production-ready version trained on a large and high-quality dataset is out and can be test [here](https://tweet-sentiment-flask-v2-0.vercel.app/)
+- An improved and production-ready version trained on a large and high-quality dataset is out and can be test [here (v2.0)](https://tweet-sentiment-flask-v2-0.vercel.app/)
 
 ---
 
