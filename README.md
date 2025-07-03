@@ -38,7 +38,7 @@ The Flask API downloads these files dynamically at runtime.
 
 ## Live App
 
-- Frontend (Vercel): [https://tweet-sentiment-flask.vercel.app](https://tweet-sentiment-flask.vercel.app)
+- Frontend (Vercel): [https://tweet-sentiment-flask.vercel.app](https://tweets-sentiment-flask.vercel.app)
 - Backend API (Render): [https://tweet-sentiment-api.onrender.com](https://tweet-sentiment-api.onrender.com)
 
 ### API Endpoint
@@ -70,6 +70,6 @@ Response:
 ## Credits
 
 - ML model and API developed by [MLwithSam](https://huggingface.co/MLwithSam)
-- Frontend hosted on [Vercel](https://tweet-sentiment-flask.vercel.app)
+- Frontend hosted on [Vercel](https://tweets-sentiment-flask.vercel.app)
 - Backend hosted on [Render](https://tweet-sentiment-api.onrender.com)
 - Model files hosted on [Hugging Face Hub](https://huggingface.co/MLwithSam/tweet-sentiment-app/tree/main)
