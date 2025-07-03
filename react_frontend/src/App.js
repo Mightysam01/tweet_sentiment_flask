@@ -42,7 +42,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Tweet Sentiment Classifier (v1.0)</h1>
+        <h1>Tweet Sentiment Classifier </h1>
         <p className="intro-text">
           This app predicts the sentiment of tweets related to <strong>airline services and customer complaints</strong>.
           It was trained on the <strong>US Airline Sentiment Dataset</strong>, which contains tweets from airline customers. 
@@ -50,7 +50,7 @@ function App() {
         </p>
         <p>
           If you're looking for a more general-purpose and balanced sentiment analysis model trained on diverse tweets,
-          you can try our improved version here:&nbsp;
+          you can try the improved version here:&nbsp;
           <a href="https://tweet-sentiment-flask-v2-0.vercel.app/" target="_blank" rel="noopener noreferrer">
             Tweet Sentiment Analyzer v2.0
           </a>
@@ -59,9 +59,9 @@ function App() {
         <div className="examples">
           <p><strong>Example Tweets You Can Try:</strong></p>
           <ul>
-            <li>"The flight was delayed for 3 hours with no explanation." → Likely Negative</li>
-            <li>"The customer service representative was helpful." → Likely Positive</li>
-            <li>"Just landed at JFK airport." → Likely Neutral</li>
+            <li>"The flight was delayed for 3 hours with no explanation." → Negative</li>
+            <li>"The customer service representative was helpful." → Positive</li>
+            <li>"Just landed at JFK airport." → Neutral</li>
           </ul>
         </div>
 
