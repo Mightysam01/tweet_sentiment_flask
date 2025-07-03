@@ -8,6 +8,10 @@ __pycache__/
 # System files
 .DS_Store
 
+# Ignore folders and everything inside them
+archive/
+tweeteval/
+
 # Virtual environment folders
 env/
 venv/
