@@ -42,17 +42,26 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Tweet Sentiment Classifier</h1>
+        <h1>Tweet Sentiment Classifier (v1.0)</h1>
         <p className="intro-text">
-          This app predicts the sentiment of short tweets or phrases. Type a sentence and press “Predict” to see if it’s classified as Positive, Neutral, or Negative.
+          This app predicts the sentiment of tweets related to <strong>airline services and customer complaints</strong>.
+          It was trained on the <strong>US Airline Sentiment Dataset</strong>, which contains tweets from airline customers. 
+          As such, the model tends to lean more toward detecting <strong>negative sentiment</strong>, since most tweets in the dataset are customer complaints.
+        </p>
+        <p>
+          If you're looking for a more general-purpose and balanced sentiment analysis model trained on diverse tweets,
+          you can try our improved version here:&nbsp;
+          <a href="https://tweet-sentiment-flask-v2-0.vercel.app/" target="_blank" rel="noopener noreferrer">
+            Tweet Sentiment Analyzer v2.0
+          </a>
         </p>
 
         <div className="examples">
-          <p><strong>Try one of these:</strong></p>
+          <p><strong>Example Tweets You Can Try:</strong></p>
           <ul>
-            <li>“I'm really happy with the new phone.” → Positive</li>
-            <li>“It’s just another regular day.” → Neutral</li>
-            <li>“I hate waiting in traffic.” → Negative</li>
+            <li>"The flight was delayed for 3 hours with no explanation." → Likely Negative</li>
+            <li>"The customer service representative was helpful." → Likely Positive</li>
+            <li>"Just landed at JFK airport." → Likely Neutral</li>
           </ul>
         </div>
 
